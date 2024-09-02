@@ -25,6 +25,7 @@ async def get_posts(
         .filter(
             models.Post.title.contains(search) | models.Post.content.contains(search)
         )
+        .order_by(models.Post.id)
         .offset(skip)
         .limit(limit)
         .all()

@@ -23,7 +23,7 @@ async def vote(
         models.Vote.post_id == vote.post_id, models.Vote.user_id == current_user.id
     )
     found_vote = vote_query.first()
-    log.info(found_vote)
+    # log.info(found_vote)
     if vote.dir == 1:
         if found_vote:
             raise HTTPException(
