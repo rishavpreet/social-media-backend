@@ -1,5 +1,5 @@
 from datetime import datetime
-from pydantic import BaseModel, EmailStr, Field, conint
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 from typing_extensions import Annotated
 
 
@@ -9,12 +9,10 @@ class UserCreate(BaseModel):
 
 
 class UserOut(BaseModel):
+    model_config = ConfigDict(extra="ignore", from_attributes=True)
     id: int
     email: EmailStr
     created_at: datetime
-
-    class Config:
-        orm_mode: True
 
 
 class UserLogin(BaseModel):
@@ -33,21 +31,17 @@ class PostCreate(PostBase):
 
 
 class Post(PostBase):
+    model_config = ConfigDict(extra="ignore", from_attributes=True)
     id: int
     created_at: datetime
     owner_id: int
     owner: UserOut
 
-    class Config:
-        orm_mode: True
-
 
 class PostOut(BaseModel):
+    model_config = ConfigDict(extra="ignore", from_attributes=True)
     Post: Post
     votes: int
-
-    class Config:
-        orm_mode: True
 
 
 class Token(BaseModel):
