@@ -22,7 +22,7 @@ jobs:
         image: postgres
         env:
           POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
-          POSTGRES_DB: fastapi_test
+          POSTGRES_DB: ${{secrets.DATABASE_NAME}}_test
         # Set health checks to wait until postgres has started
         ports:
           - 5432:5432
