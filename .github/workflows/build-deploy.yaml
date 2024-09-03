@@ -4,7 +4,7 @@ on:
     branches:
       - "main"
 jobs:
-  Testing Backend APIs:
+  testing-backend-api:
     environment:
       name: Testing
     env:
